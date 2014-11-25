@@ -30,7 +30,7 @@ module.exports = function (grunt, options) {
         throw new Error("Current working directory is not specified");
     }
 
-    grunt.loadTasks('./tasks');
+    grunt.loadTasks(__dirname + '/tasks');
 
     try {
         grunt.loadTasks(options.cwd + '/tasks');
@@ -52,7 +52,7 @@ module.exports = function (grunt, options) {
         svn: localSrc
     };
 
-    grunt.util._.extend(config, loadConfig('./tasks/options/', grunt), loadConfig(options.cwd + '/tasks/options/', grunt));
+    grunt.util._.extend(config, loadConfig(__dirname + '/tasks/options/', grunt), loadConfig(options.cwd + '/tasks/options/', grunt));
 
     grunt.initConfig(config);
 };
