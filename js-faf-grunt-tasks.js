@@ -39,6 +39,7 @@ module.exports = function (grunt, options) {
     try {
         var ws = grunt.file.readJSON(options.cwd + '/.workspace'),
             server = ws ? ws.server : null,
+            isPro = ws ? (ws.isPro !== false) : false,
             localSrc = ws ? ws['working-copy'] : null;
     } catch (e) {
         grunt.log.writeln('No \'.workspace\' was found.');
@@ -47,7 +48,9 @@ module.exports = function (grunt, options) {
     var config = {
         pkg: grunt.file.readJSON(options.cwd + '/package.json'),
         jrs: server,
-        svn: localSrc
+        svn: localSrc,
+        isPro: isPro,
+        overlay: 'build/maven/com/jaspersoft/<%= pkg.name %>/<%= pkg.overlayVersion %>'
     };
 
     extendConfig(config, __dirname + '/tasks/options/', grunt);
