@@ -1,8 +1,6 @@
 var glob = require('glob');
 
-function loadConfig(path, grunt) {
-    var config = {};
-
+function extendConfig(config, path, grunt) {
     try {
         glob.sync('*', {cwd: path}).forEach(function (option) {
             var parts = option.replace(/\.js$/, '').split("-"),
@@ -52,7 +50,8 @@ module.exports = function (grunt, options) {
         svn: localSrc
     };
 
-    grunt.util._.extend(config, loadConfig(__dirname + '/tasks/options/', grunt), loadConfig(options.cwd + '/tasks/options/', grunt));
+    extendConfig(config, __dirname + '/tasks/options/', grunt);
+    extendConfig(config, options.cwd + '/tasks/options/', grunt);
 
     grunt.initConfig(config);
 };
