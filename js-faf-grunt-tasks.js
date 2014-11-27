@@ -49,6 +49,7 @@ module.exports = function (grunt, options) {
         pkg: grunt.file.readJSON(options.cwd + '/package.json'),
         jrs: server,
         svn: localSrc,
+        cwd: options.cwd,
         isPro: isPro,
         overlay: 'build/maven/com/jaspersoft/<%= pkg.name %>/<%= pkg.overlayVersion %>'
     };
