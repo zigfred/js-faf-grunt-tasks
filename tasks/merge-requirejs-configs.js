@@ -1,7 +1,7 @@
 var requireMerge = require('requirejs-config-merge'),
     FAF_MODULES = [
         'js-sdk',
-        'bi-repository',
+        'bi-report',
         'bi-control',
         'bi-repo',
         'bi-dashboard',
