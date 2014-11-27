@@ -1,7 +1,8 @@
 module.exports = function(grunt) {
     grunt.registerTask('optimize','Run optimization', [
         'clean:optimization',
-        'merge-requirejs-configs',
+        'filterSources',
+        'generate-requirejs-optimize-options',
         'requirejs'
     ]);
 };
