@@ -1,1 +1,1 @@
-module.exports = ['build/maven'];
+module.exports = ['build/overlay'];
