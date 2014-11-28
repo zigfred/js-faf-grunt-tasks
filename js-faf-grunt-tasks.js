@@ -1,18 +1,18 @@
-var glob = require('glob');
+var glob = require('glob'),
+    merge = require("merge");
 
 function extendConfig(config, path, grunt) {
     try {
         glob.sync('*', {cwd: path}).forEach(function (option) {
             var parts = option.replace(/\.js$/, '').split("-"),
-                level = config;
+                obj = level = {};
 
             for (var i = 0; i < parts.length; i++) {
-                if (!level[parts[i]]) {
-                    level[parts[i]] = (i + 1) === parts.length ? require(path + option) : {};
-                }
-
+                level[parts[i]] = (i + 1) === parts.length ? require(path + option) : {};
                 level = level[parts[i]];
             }
+
+            config = merge.recursive(true, config, obj);
         });
     } catch(ex) {
         grunt.log.writeln("Cannot read grunt config options: " + ex);
@@ -54,8 +54,8 @@ module.exports = function (grunt, options) {
         overlay: 'build/maven/com/jaspersoft/<%= pkg.name %>/<%= pkg.overlayVersion %>'
     };
 
-    extendConfig(config, __dirname + '/tasks/options/', grunt);
-    extendConfig(config, options.cwd + '/tasks/options/', grunt);
+    config = extendConfig(config, __dirname + '/tasks/options/', grunt);
+    config = extendConfig(config, options.cwd + '/tasks/options/', grunt);
 
     grunt.initConfig(config);
 };
