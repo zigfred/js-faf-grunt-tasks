@@ -5,5 +5,16 @@ module.exports = {
         ]
     },
     options: {
+        "predef": [
+            "define",
+            "expect",
+            "describe",
+            "it",
+            "xit",
+            "sinon",
+            "beforeEach",
+            "afterEach",
+            "jasmine"
+        ]
     }
 };

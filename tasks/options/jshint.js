@@ -42,7 +42,7 @@ module.exports = {
         "nonew"         : false,     // Prohibit use of constructors for side-effects.
         "plusplus"      : false,     // Prohibit use of `++` & `--`.
         "regexp"        : false,     // Prohibit `.` and `[^...]` in regular expressions.
-        "undef"         : false,     // Require all non-global variables be declared before they are used.
+        "undef"         : true,     // Require all non-global variables be declared before they are used.
         "strict"        : false,     // Require `use strict` pragma in every file.
         "trailing"      : true,     // Prohibit trailing whitespaces.
 
@@ -118,8 +118,7 @@ module.exports = {
         "maxerr"        : 100,      // Maximum errors before stopping.
         "predef"        : [         // Extra globals.
             "define",
-            //"anotherCoolGlobal",
-            //"iLoveDouglas"
+            "requirejs"
         ],
         "indent"        : 4         // Specify indentation spacing
 
