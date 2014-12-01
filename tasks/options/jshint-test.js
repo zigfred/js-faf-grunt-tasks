@@ -9,6 +9,7 @@ module.exports = {
             "define",
             "expect",
             "describe",
+            "xdescribe",
             "it",
             "xit",
             "sinon",
