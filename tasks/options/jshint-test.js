@@ -15,7 +15,9 @@ module.exports = {
             "sinon",
             "beforeEach",
             "afterEach",
-            "jasmine"
+            "jasmine",
+            "setTemplates",
+            "setFixtures"
         ]
     }
 };
