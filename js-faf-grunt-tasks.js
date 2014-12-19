@@ -2,13 +2,18 @@ var glob = require('glob'),
     merge = require("merge");
 
 function extendConfig(config, path, grunt) {
+    var getContent = {
+        js: require,
+        json: grunt.file.readJSON
+    };
     try {
-        glob.sync('*', {cwd: path}).forEach(function (option) {
-            var parts = option.replace(/\.js$/, '').split("-"),
+        glob.sync('*.js?(on)', {cwd: path}).forEach(function (option) {
+            var type = option.split(".").pop(),
+                parts = option.replace(/\.json|.js$/, '').split("-"),
                 obj = level = {};
 
             for (var i = 0; i < parts.length; i++) {
-                level[parts[i]] = (i + 1) === parts.length ? require(path + option) : {};
+                level[parts[i]] = (i + 1) === parts.length ? getContent[type](path + option) : {};
                 level = level[parts[i]];
             }
 
