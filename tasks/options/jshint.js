@@ -1,7 +1,8 @@
 module.exports = {
     options: {
         ignores: [
-            "src/bower_components/**"
+            "src/bower_components/**",
+            "src/build.js"
         ],
         // --------------------------------------------------------------------
         // JSHint Configuration, Strict Edition
