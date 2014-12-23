@@ -2,6 +2,7 @@ module.exports = {
     options: {
         ignores: [
             "src/bower_components/**",
+            "test/karma-coverage/**",
             "src/build.js"
         ],
         // --------------------------------------------------------------------

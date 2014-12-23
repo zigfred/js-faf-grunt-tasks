@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    grunt.registerTask('filterSources','Prepare sources for optimization, overlay and deploy', [
+    grunt.registerTask('filter-sources','Prepare sources for optimization, overlay and deploy', [
         'clean:filteredSources',
         'merge-requirejs-configs',
         'generate-additional-filteredSources-config',
